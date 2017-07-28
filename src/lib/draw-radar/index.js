@@ -6,7 +6,7 @@
 require('./index.pcss')
 
 
-export default function drawRadar({el, data,names}) {
+export default function drawRadar({data,names}) {
 
   let eBox = document.createElement('div')
 
@@ -54,8 +54,6 @@ export default function drawRadar({el, data,names}) {
         d += 'L' + x + ' ' + y
       }
       d += 'Z';
-
-      return d
     }
 
     // 开始画米线，架子线
@@ -67,7 +65,6 @@ export default function drawRadar({el, data,names}) {
       d += 'M' + cx + ' ' + cy + 'L' + x + ' ' + y
     }
 
-
 // 开始画雷达背景层数
     let lyNum = 4
     let lyd = r / lyNum
@@ -77,7 +74,7 @@ export default function drawRadar({el, data,names}) {
       let _r = r - _oty
       let sy = _oty + ognY
 
-      let d = drayPolygon(_r, ognX, sy)
+      drayPolygon(_r, ognX, sy)
     }
     paths[0].setAttribute('d', d)
   }
@@ -139,5 +136,7 @@ export default function drawRadar({el, data,names}) {
   label(names)
   draw();
 
-  el.outerHTML = eBox.outerHTML
+
+
+  return eBox
 }
